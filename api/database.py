@@ -21,12 +21,12 @@ users_model ='''
     CREATE TABLE IF NOT EXISTS users (
   id integer PRIMARY KEY,
   username TEXT NOT NULL,
-  role TEXT NOT NULL,
+  role TEXT NOT NULL DEFAULT 1,
   email TEXT NOT NULL,
   password TEXT NOT NULL,
   status BOOLEAN DEFAULT TRUE,
-  created_at TIMESTAMP DEFAULT (datatime('now','localtime')),
-  update_at TIMESTAMP DEFAULT (datatime('now','localtime')),
+  created_at TIMESTAMP DEFAULT (datetime('now','localtime')),
+  update_at TIMESTAMP DEFAULT (datetime('now','localtime')),
   deleted_at NULL
   )
 
@@ -41,4 +41,4 @@ cur.execute(users_model)
 
 
 #close connection
-con.close()
+#con.close()
