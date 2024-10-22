@@ -1,44 +1,54 @@
 '''
-Nombre: Cristian Hernandez
-Scrpt description: weather-station Database
-engine: SQLite 3
-Date: 9/9/24
+Dev: Joan C.
+Script description: weather-station DataBase
+Engine: SQLite3
+Date: 09-09-2024
 '''
-#import database engine  package
+
+#Import database engine package
 import sqlite3
 
+#Create weather-station database connection
+con = sqlite3.connect('weather_station.db')
 
-#create weather-station database connection
-con = sqlite3.connect('weather-station.db')
-
-
-#created cursor
+#Create cursor
 cur = con.cursor()
 
-
-#users model
-users_model ='''
+#Users model
+users_model = '''
     CREATE TABLE IF NOT EXISTS users (
-  id integer PRIMARY KEY,
-  username TEXT NOT NULL,
-  role TEXT NOT NULL DEFAULT 1,
-  email TEXT NOT NULL,
-  password TEXT NOT NULL,
-  status BOOLEAN DEFAULT TRUE,
-  created_at TIMESTAMP DEFAULT (datetime('now','localtime')),
-  update_at TIMESTAMP DEFAULT (datetime('now','localtime')),
-  deleted_at NULL
-  )
+        id INTEGER PRIMARY KEY,
+        username TEXT NOT NULL,
+        email TEXT NOT NULL,
+        password TEXT NOT NULL,
+        role INTEGER NOT NULL DEFAULT 1,
+        status BOOLEAN DEFAULT true,
+        created_at TIMESTAMP DEFAULT (datetime('now','localtime')),
+        update_at TIMESTAMP DEFAULT (datetime('now','localtime')),
+        deleted_at NULL
+    )
+'''
 
-
-
-
+#Sensors model
+sensors_model = '''
+    CREATE TABLE IF NOT EXISTS sensors (
+        id INTEGER PRIMARY KEY,
+        name TEXT NOT NULL,
+        model TEXT NOT NULL,
+        description TEXT NOT NULL,
+        url_datasheet TEXT NULL,
+        url_image TEXT NULL,
+        status BOOLEAN DEFAULT true,
+        created_at TIMESTAMP DEFAULT (datetime('now','localtime')),
+        update_at TIMESTAMP DEFAULT (datetime('now','localtime')),
+        deleted_at NULL
+    )
 '''
 
 
-# Eexecute query
+#Execute query
 cur.execute(users_model)
+cur.execute(sensors_model)
 
-
-#close connection
+#Close connection
 #con.close()
