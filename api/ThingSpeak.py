@@ -7,7 +7,7 @@ CHANNEL_ID = '2734194'
 WRITE_API_KEY = 'XCICDYJMGU0XC4WX'  
 
 # URL de la API para enviar datos
-THINGSPEAK_URL = f'https://thingspeak.mathworks.com/channels/2734194/private_show'
+THINGSPEAK_URL = f'https://api.thingspeak.com/update'
 
 # Inicializar las variables para almacenar el último valor de temperatura y humedad
 last_temperature = -11  # Un valor menor que el mínimo posible (-10)
